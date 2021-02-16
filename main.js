@@ -116,7 +116,6 @@ new Vue({
     editContact(index, contact) {
       contact.editable = true;
       this.selectedIndex = index;
-      console.log(index);
     },
     updateContact(contact) {
       if (event.target.name.value !== "") {
