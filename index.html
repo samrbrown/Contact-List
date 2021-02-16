@@ -22,11 +22,12 @@
             <div class="container">
                 <div class="contacts-list">
                 <h1>Contact List</h1>
-    
+
+                <!-- Button to show and hide Add Contact Form -->
                 <button v-if='!showForm' id="showForm" @click="showForm = !showForm">Add Contact</button>
                 <button v-else id="hideForm" @click="showForm = !showForm">Close</button>
+
                 <!-- Form to Add a contact to the list-->
-                
                 <form v-if="showForm" id='add-contact' @submit="checkForm">
                     <p v-if="errors.length">
                         <b>Please Correct the following error(s):</b>
@@ -40,7 +41,6 @@
                     <input type="tel" placeholder="Primary" name="primary" v-model="primary"/>
                     <input type='submit' value='add'>
                 </form>
-                <!-- end of form -->
 
                 <!-- Display all contacts -->
                 <div class='contact' v-for="(contact, index) in contacts">
@@ -51,18 +51,26 @@
                         <p>{{contact.email}}</p>
                         <p>{{contact.primary}}</p>
                     
+                    <!-- Edit Contact -->
                     <button @click="editContact(index, contact)">Edit</button>
+
+                    <!-- Delete Contact -->
                     <button @click="deleteContact(index)">Delete</button>
                     </div>
                     </div>
-                    
+
+                    <!-- Display Contact Details as inputs to make them editable -->
                     <div v-else class="edit-details">
                         <form @submit="updateContact(contact)">
                         <input type="text" name='name' :placeholder="contact.name"/>
                         <input type="text" name='location' :placeholder="contact.location"/>
                         <input type="text" name='email' :placeholder="contact.email"/>
                         <input type="text" name='primary' :placeholder="contact.primary"/>
+
+                        <!-- Update Contact Details -->
                         <button type="submit">Update</button>
+
+                        <!-- Cancel update -->
                         <button @click="cancelUpdate(contact)">Cancel</button>
                         </form>
                     </div>
