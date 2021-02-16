@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Akero's Contacts</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Vue JS Element -->
+        <div id="app">
+            <div class="container">
+                <div class="contacts-list">
+                <h1>Contact List</h1>
+    
+                <button v-if='!showForm' id="showForm" @click="showForm = !showForm">Add Contact</button>
+                <button v-else id="hideForm" @click="showForm = !showForm">Close</button>
+                <!-- Form to Add a contact to the list-->
+                
+                <form v-if="showForm" id='add-contact' @submit="checkForm">
+                    <p v-if="errors.length">
+                        <b>Please Correct the following error(s):</b>
+                        <ul>
+                            <li v-for="error in errors">{{error}}</li>
+                        </ul>
+                    </p>
+                    <input type="text" placeholder="Name" name="name" v-model='name'/>
+                    <input type="email" placeholder="Email" name="email" v-model="email"/>
+                    <input type="text" placeholder="Location" name="location" v-model="location"/>
+                    <input type="tel" placeholder="Primary" name="primary" v-model="primary"/>
+                    <input type='submit' value='add'>
+                </form>
+                <!-- end of form -->
+
+                <!-- Display all contacts -->
+                <div class='contact' v-for="(contact, index) in contacts">
+                    <div v-if="!contact.editable">
+                    <h1>{{contact.name}}</h1>
+                    <div class="details">
+                        <p>{{contact.location}}</p>
+                        <p>{{contact.email}}</p>
+                        <p>{{contact.primary}}</p>
+                    
+                    <button @click="editContact(index, contact)">Edit</button>
+                    <button @click="deleteContact(index)">Delete</button>
+                    </div>
+                    </div>
+                    
+                    <div v-else class="edit-details">
+                        <form @submit="updateContact(contact)">
+                        <input type="text" name='name' :placeholder="contact.name"/>
+                        <input type="text" name='location' :placeholder="contact.location"/>
+                        <input type="text" name='email' :placeholder="contact.email"/>
+                        <input type="text" name='primary' :placeholder="contact.primary"/>
+                        <button type="submit">Update</button>
+                        <button @click="cancelUpdate(contact)">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
