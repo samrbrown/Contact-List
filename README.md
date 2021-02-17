@@ -18,7 +18,7 @@ As I have said already, I have enjoyed this task, but it has made me realise par
 
 * I think my commenting and naming conventions could use a little work to make them easier to understand. Similar to using Github, I think day-to-day use will improve this quickly.
 
-## Possible future updates
+## Future updates
 
 - Better form validation - currently a very basic one in place, but something more advanced and secure as well as better looking.
 
@@ -27,6 +27,8 @@ As I have said already, I have enjoyed this task, but it has made me realise par
 - Profile pictures - The ability to add profile pictures as well as setting default ones for those that aren't set.
 
 - Switch to a NPM or CLI build.
+
+- Scrollbar added to contact list.
 
 ## Setup
 
