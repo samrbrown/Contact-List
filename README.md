@@ -1,6 +1,6 @@
 # Contact List
 
-This is just a simple contact list tasked to my by the masterminds at Net Natives.
+This is just a simple contact list tasked to me by the masterminds at Net Natives.
 
 I decided to challenge myself and throw myself into the Vue.JS framework, I really enjoyed learning some of the basics this framework for this task. Saying this, I am fully aware I have just about scratched the surface of the possibilities that Vue gives.
 
