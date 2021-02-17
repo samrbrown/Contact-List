@@ -16,7 +16,7 @@ As I have said already, I have enjoyed this task, but it has made me realise par
 
 * I found a little trouble getting the input values when for updating contacts and I think there must be an easier and more succinct way of doing so.
 
-* I think my commenting and naming conventions could use a little work to make them easier to understand.
+* I think my commenting and naming conventions could use a little work to make them easier to understand. Similar to using Github, I think day-to-day use will improve this quickly.
 
 ## Possible future updates
 
