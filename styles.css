@@ -1,69 +1,45 @@
+/* Breakpoint Variables */
 * {
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: greyscale;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
   height: 100vh;
   width: 100vw;
-  background: whitesmoke;
+  background: linear-gradient(135deg, #344bf9, #9941f1 80%);
+}
+
+body #app {
+  height: 100%;
+  width: 100%;
 }
 
 body #app .container {
-  max-width: 100%;
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 2rem;
-}
-
-body #app .container .contacts-list {
   width: 100%;
+  height: 100%;
+  padding: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
-body #app .container .contacts-list button {
-  padding: 1rem;
-  border: 0;
-  border-radius: 10px;
-}
-
-body #app .container .contacts-list button:focus {
-  outline: none !important;
-}
-
-body #app .container .contacts-list button#showForm {
-  background-color: #344bf9;
-  color: #fff;
-  font-weight: bolder;
-  margin: 1rem 0;
-}
-
-body #app .container .contacts-list button#hideForm {
-  background-color: #e02e4f;
-  color: #fff;
-  font-weight: bolder;
-  margin: 1rem 0;
-}
-
-body #app .container .contacts-list #add-contact {
-  width: 75%;
+body #app .container .mobile-head {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -73,20 +49,91 @@ body #app .container .contacts-list #add-contact {
           flex-direction: column;
 }
 
-body #app .container .contacts-list #add-contact input {
-  margin: 0.5rem 0;
+body #app .container .title {
+  color: #fff;
+}
+
+body #app .container .form-validation {
+  color: #fff;
+  font-size: 1.15rem;
+  margin-bottom: 0.25rem;
+}
+
+body #app .container .form-validation-errors {
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  margin-bottom: 0.25rem;
+}
+
+body #app .container .form-validation-errors li {
+  margin: 0 0.75rem;
+  font-weight: bolder;
+}
+
+body #app .container button {
   padding: 1rem;
+  border: 0;
   border-radius: 10px;
+}
+
+body #app .container button:focus {
+  outline: none !important;
+}
+
+body #app .container button#showForm {
+  background-color: #ff00e6;
+  color: #fff;
+  font-weight: bolder;
+  margin: 1rem 0;
+  font-size: 1.25rem;
+}
+
+body #app .container button#hideForm {
+  background-color: #e02e4f;
+  color: #fff;
+  font-weight: bolder;
+  margin: 1rem 0;
+  font-size: 1.25rem;
+}
+
+body #app .container #add-contact {
+  width: 75vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  border-radius: 10px;
+}
+
+body #app .container #add-contact .mobile-only {
+  display: none;
+}
+
+body #app .container #add-contact input {
+  font-size: 1.05rem;
+  margin: 0.5rem 0.25rem;
+  width: 25%;
+  padding: 1rem;
+  border-radius: 7.5px;
   border: 1px solid lightgray;
 }
 
-body #app .container .contacts-list #add-contact input:focus {
+body #app .container #add-contact input:focus {
   outline: none !important;
-  border: 2px solid #344bf9;
+  border: 2px solid #ff00e6;
 }
 
-body #app .container .contacts-list #add-contact input[type="submit"] {
-  background: #344bf9;
+body #app .container #add-contact input[type="submit"] {
+  background: #ff00e6;
   color: #fff;
   font-weight: bold;
   font-size: 1rem;
@@ -94,15 +141,42 @@ body #app .container .contacts-list #add-contact input[type="submit"] {
   text-transform: uppercase;
 }
 
-body #app .container .contacts-list .contact {
-  max-width: 75%;
-  min-width: 50%;
-  border-radius: 15px;
-  padding: 1rem;
-  margin: 1rem 0;
+body #app .container .contacts-list {
+  width: 75vw;
+  max-height: 75vh;
+  overflow: scroll;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: #fff;
   -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 10px;
+}
+
+body #app .container .contacts-list .contact {
+  width: 100%;
+  min-width: 200px;
+  padding: 1rem;
+  margin: 0.1rem 0;
+  background: #fff;
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+body #app .container .contacts-list .contact:first-child {
+  margin-top: 0;
+}
+
+body #app .container .contacts-list .contact:last-child {
+  margin-bottom: 0;
 }
 
 body #app .container .contacts-list .contact .details {
@@ -123,6 +197,13 @@ body #app .container .contacts-list .contact .details button {
   text-transform: uppercase;
   margin-top: 0.5rem;
   margin-right: 1rem;
+  background-color: #344bf9;
+  width: 100%;
+  color: #fff;
+}
+
+body #app .container .contacts-list .contact .details button.delete {
+  background-color: #e02e4f;
 }
 
 body #app .container .contacts-list .contact .edit-details {
@@ -158,5 +239,192 @@ body #app .container .contacts-list .contact .edit-details form button {
   text-transform: uppercase;
   margin-top: 0.5rem;
   margin-right: 1rem;
+  color: #fff;
+  width: 100%;
+}
+
+body #app .container .contacts-list .contact .edit-details form button.update {
+  background-color: #344bf9;
+}
+
+body #app .container .contacts-list .contact .edit-details form button.cancel {
+  background-color: #e02e4f;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  body #app .container .form-validation,
+  body #app .container .form-validation-errors {
+    display: none;
+  }
+  body #app .container #add-contact {
+    width: 80vw;
+    height: 90vh;
+    background: linear-gradient(135deg, #344bf9, #9941f1 80%);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    border-radius: 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  }
+  body #app .container #add-contact .mobile-only {
+    display: initial;
+    color: #fff;
+  }
+  body #app .container #add-contact input {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  body #app .container #add-contact {
+    height: 95vh;
+  }
+}
+
+@media only screen and (min-width: 375px) and (max-width: 823px) and (orientation: landscape) {
+  body #app .container {
+    padding: 0.5rem;
+  }
+  body #app .container .mobile-head {
+    width: 90vw;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  body #app .container #add-contact {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #344bf9, #9941f1 80%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  body #app .container #add-contact #hideForm {
+    margin-bottom: 0.25rem;
+  }
+  body #app .container #add-contact ul.mobile-only {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    list-style: none;
+  }
+  body #app .container #add-contact ul.mobile-only li {
+    margin: 0 0.75rem;
+    font-weight: bolder;
+  }
+  body #app .container #add-contact .mobile-only {
+    display: initial;
+    color: #fff;
+  }
+  body #app .container #add-contact input {
+    width: 90vw;
+    margin: 0.25rem 0;
+    height: 12.5%;
+  }
+  body #app .container .contacts-list {
+    width: 90vw;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  body #app .container {
+    padding: 0.5rem;
+  }
+  body #app .container #add-contact {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #344bf9, #9941f1 80%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  body #app .container #add-contact .mobile-only {
+    display: initial;
+    color: #fff;
+  }
+  body #app .container #add-contact input {
+    width: 90vw;
+  }
+  body #app .container .contacts-list {
+    width: 90vw;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+  body #app .container .mobile-head {
+    width: 90vw;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  body #app .container button#showForm {
+    margin: 0.5rem;
+  }
+  body #app .container #add-contact .mobile-only {
+    margin: 0;
+  }
+  body #app .container #add-contact ul.mobile-only {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    list-style-type: none;
+  }
+  body #app .container #add-contact ul.mobile-only li {
+    margin: 0 0.5rem;
+  }
+  body #app .container #add-contact input {
+    height: 40px;
+    margin: 0.25rem;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

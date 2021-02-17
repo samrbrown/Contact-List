@@ -72,6 +72,7 @@ new Vue({
     ],
   },
   methods: {
+    //Basic Form Validation & if all meet requirements, add to contact list
     checkForm(e) {
       if (this.name && this.email && this.location && this.primary) {
         this.contacts.unshift({
@@ -86,18 +87,18 @@ new Vue({
         this.location = "";
         this.primary = "";
         this.errors = [];
+        this.showForm = false;
         e.preventDefault();
       } else {
         this.errors = [];
-        console.log(this.errors);
         if (!this.name) {
-          this.errors.push("Name required.");
+          this.errors.push("Name required");
         }
         if (!this.email) {
-          this.errors.push("Email required.");
+          this.errors.push("Email required");
         }
         if (!this.location) {
-          this.errors.push("Location required.");
+          this.errors.push("Location required");
         }
         if (!this.primary) {
           this.errors.push("Primary required");
@@ -105,18 +106,31 @@ new Vue({
         e.preventDefault();
       }
     },
+    // Add 'editable' key and value to all objects in array in Contacts
     check() {
       this.contacts.forEach((o, i) => {
         this.$set(this.contacts[i], "editable", false);
       });
     },
+    //Hide/Show form & remove any information should form be partially filled out on close
+    formView() {
+      this.showForm = !this.showForm;
+      this.name = "";
+      this.email = "";
+      this.location = "";
+      this.primary = "";
+      this.errors = [];
+    },
+    // Stop editing current contact
     cancelUpdate(contact) {
       contact.editable = false;
     },
+    // Start editing current contact
     editContact(index, contact) {
       contact.editable = true;
       this.selectedIndex = index;
     },
+    // Update contact in Contacts Array
     updateContact(contact) {
       if (event.target.name.value !== "") {
         contact.name = event.target.name.value;
@@ -131,10 +145,12 @@ new Vue({
       contact.editable = false;
       event.preventDefault();
     },
+    //Remove contact from array
     deleteContact(index) {
       this.contacts.splice(index, 1);
     },
   },
+  //Add 'editable' to all objects in array before page is shown
   beforeMount() {
     this.check();
   },

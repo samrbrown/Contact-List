@@ -20,20 +20,29 @@
         <!-- Vue JS Element -->
         <div id="app">
             <div class="container">
-                <div class="contacts-list">
-                <h1>Contact List</h1>
+                <div class='mobile-head'>
+                <h1 class='title'>Contact List</h1>
 
                 <!-- Button to show and hide Add Contact Form -->
-                <button v-if='!showForm' id="showForm" @click="showForm = !showForm">Add Contact</button>
-                <button v-else id="hideForm" @click="showForm = !showForm">Close</button>
+                <button v-if='!showForm' id="showForm" @click="formView">Add Contact</button>
+                <button v-else id="hideForm" @click="formView">Close</button>
+                </div>
+                <p class='form-validation' v-if="errors.length">
+                    <b>Please Correct the following error(s):</b>
+                <ul class='form-validation-errors'>
+                    <li v-for="error in errors">{{error}}</li>
+                </ul>
+                </p>
+                
 
                 <!-- Form to Add a contact to the list-->
                 <form v-if="showForm" id='add-contact' @submit="checkForm">
-                    <p v-if="errors.length">
+                    <button @click="formView" id="hideForm" class='mobile-only'>Close</button>
+                    <p class='mobile-only' v-if="errors.length">
                         <b>Please Correct the following error(s):</b>
-                        <ul>
-                            <li v-for="error in errors">{{error}}</li>
-                        </ul>
+                    <ul class='mobile-only'>
+                        <li v-for="error in errors">{{error}}</li>
+                    </ul>
                     </p>
                     <input type="text" placeholder="Name" name="name" v-model='name'/>
                     <input type="email" placeholder="Email" name="email" v-model="email"/>
@@ -41,7 +50,7 @@
                     <input type="tel" placeholder="Primary" name="primary" v-model="primary"/>
                     <input type='submit' value='add'>
                 </form>
-
+                <div class="contacts-list">
                 <!-- Display all contacts -->
                 <div class='contact' v-for="(contact, index) in contacts">
                     <div v-if="!contact.editable">
@@ -55,23 +64,23 @@
                     <button @click="editContact(index, contact)">Edit</button>
 
                     <!-- Delete Contact -->
-                    <button @click="deleteContact(index)">Delete</button>
+                    <button class='delete' @click="deleteContact(index)">Delete</button>
                     </div>
                     </div>
 
                     <!-- Display Contact Details as inputs to make them editable -->
                     <div v-else class="edit-details">
                         <form @submit="updateContact(contact)">
-                        <input type="text" name='name' :placeholder="contact.name"/>
+                        <input type="text" name='name' :placeholder="contact.name" />
                         <input type="text" name='location' :placeholder="contact.location"/>
                         <input type="text" name='email' :placeholder="contact.email"/>
                         <input type="text" name='primary' :placeholder="contact.primary"/>
 
                         <!-- Update Contact Details -->
-                        <button type="submit">Update</button>
+                        <button class='update' type="submit">Update</button>
 
                         <!-- Cancel update -->
-                        <button @click="cancelUpdate(contact)">Cancel</button>
+                        <button class='cancel' @click="cancelUpdate(contact)">Cancel</button>
                         </form>
                     </div>
                 </div>
