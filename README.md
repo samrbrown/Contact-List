@@ -30,6 +30,8 @@ As I have said already, I have enjoyed this task, but it has made me realise par
 
 - Scrollbar added to contact list.
 
+* Filter to search through contacts.
+
 ## Setup
 
 All that is needed is to either clone this repository or download it locally and it should be ready to go.
